@@ -46,7 +46,7 @@ $conn->close();
             Precio: <input name="precio" value="<?php echo $producto[0]['precio'] ?>" type="number"><br>
             Cantidad: <input name="cantidad" value="<?php echo $producto[0]['cantidad'] ?>" type="number"><br>
             <br>
-            <a href="index.php"><button type="button">Cancelar</button></a>
+            <a href="index.php"><button type="button"><< volver</button></a>
             <button type="submit">Guardar</button>
         </fieldset>
     </form>

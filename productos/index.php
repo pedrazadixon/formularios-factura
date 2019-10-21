@@ -25,7 +25,7 @@ $conn->close();
 
 <h2>Productos</h2>
 <hr>
-<a href="crear.php"><button>Nuevo Producto</button></a>
+<a href="crear.php"><button> + Nuevo Producto</button></a>
 <hr>
 
 <table border="1">
@@ -53,3 +53,7 @@ $conn->close();
     <?php endforeach; ?>
 
 </table>
+
+<hr>
+
+<a href="../"><button><< volver</button></a>

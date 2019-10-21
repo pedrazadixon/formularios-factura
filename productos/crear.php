@@ -8,7 +8,7 @@
             Precio: <input name="precio" type="number"><br>
             Cantidad: <input name="cantidad" type="number"><br>
             <br>
-            <a href="index.php"><button type="button">Cancelar</button></a>
+            <a href="index.php"><button type="button"><< volver</button> </a>
             <button type="submit">Guardar</button>
         </fieldset>
     </form>
