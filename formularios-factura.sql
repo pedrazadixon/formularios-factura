@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 19-10-2019 a las 18:45:47
--- Versión del servidor: 10.1.28-MariaDB
--- Versión de PHP: 7.1.11
+-- Host: localhost:3306
+-- Generation Time: Oct 21, 2019 at 03:28 PM
+-- Server version: 5.7.24
+-- PHP Version: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `formulario`
+-- Database: `formularios-factura`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `clientes`
+-- Table structure for table `clientes`
 --
 
 CREATE TABLE `clientes` (
@@ -37,7 +37,7 @@ CREATE TABLE `clientes` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `facturas`
+-- Table structure for table `facturas`
 --
 
 CREATE TABLE `facturas` (
@@ -49,7 +49,7 @@ CREATE TABLE `facturas` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `facturas_productos`
+-- Table structure for table `facturas_productos`
 --
 
 CREATE TABLE `facturas_productos` (
@@ -62,7 +62,7 @@ CREATE TABLE `facturas_productos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `productos`
+-- Table structure for table `productos`
 --
 
 CREATE TABLE `productos` (
@@ -73,71 +73,60 @@ CREATE TABLE `productos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `productos`
---
-
-INSERT INTO `productos` (`id`, `descripcion`, `precio`, `cantidad`) VALUES
-(1, 'Escoba', 3200, 1),
-(2, 'Trapero', 4500, 1),
-(3, 'Recogedor', 8000, 3),
-(4, 'Varsol', 1400, 2),
-(5, 'Detergente', 2000, 3);
-
---
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `clientes`
+-- Indexes for table `clientes`
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `facturas`
+-- Indexes for table `facturas`
 --
 ALTER TABLE `facturas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `facturas_productos`
+-- Indexes for table `facturas_productos`
 --
 ALTER TABLE `facturas_productos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `productos`
+-- Indexes for table `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `clientes`
+-- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `facturas`
+-- AUTO_INCREMENT for table `facturas`
 --
 ALTER TABLE `facturas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `facturas_productos`
+-- AUTO_INCREMENT for table `facturas_productos`
 --
 ALTER TABLE `facturas_productos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `productos`
+-- AUTO_INCREMENT for table `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
