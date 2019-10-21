@@ -49,7 +49,7 @@ $conn->close();
                 <td><?php echo $factura['razon_social'] ?></td>
                 <td><?php echo $factura['fecha'] ?></td>
                 <td>
-                    <a href="ver.php?id=<?php echo $factura['id'] ?>"><button>Ver</button></a>
+                    <a href="ver.php?id=<?php echo $factura['id_factura'] ?>"><button>Ver</button></a>
                 </td>
             </tr>
         <?php endforeach; ?>

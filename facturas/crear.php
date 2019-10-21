@@ -48,12 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-
     if (isset($_POST['facturar']) && $_POST['facturar'] == "facturar") {
-
-
-        print_r($_POST);
-        // exit();
 
         if (isset($_POST['productos_']) && !empty($_POST['productos_'])) {
 
@@ -63,11 +58,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $id_factura = $conn->insert_id;
 
-
                 foreach ($_POST['productos_'] as $key => $producto_factura) {
 
-                    $sql = "INSERT INTO `facturas_productos` (`id_facturas_productos`, `factura_id`, `producto_id`, `cantidad`, `precio`) 
+                    $sql = "INSERT INTO `facturas_productos` (`id_facturas_productos`, `factura_id`, `producto_id`, `cantidad`, `precio_factura`) 
                         VALUES (NULL, '" . $id_factura . "', '" . $producto_factura["id_producto"] . "', '" . $producto_factura["cantidad"] . "', '" . $producto_factura["precio"] . "')";
+
+                    echo $sql;
 
                     $conn->query($sql);
                 }
@@ -83,6 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Debe añadir al menos un producto.";
         }
     }
+
 }
 
 ?>
@@ -125,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <fieldset>
                 <legend>Productos</legend>
 
-                <input type="text" name="productos_factura" value="<?php echo @$productos_factura_input ?>">
+                <input type="hidden" name="productos_factura" value="<?php echo @$productos_factura_input ?>">
 
                 <?php if (@!empty($productos_factura)) : ?>
 
@@ -138,22 +135,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <?php $contador = 1 ?>
                         <?php foreach ($productos_factura as $key => $producto) : ?>
+
+
+                            <?php
+                                    @$cantidad_actual = $_POST['productos_'][$contador]['cantidad'];
+                                    @$precio_actual = (isset($_POST['productos_'][$contador]['precio']) && !empty($_POST['productos_'][$contador]['precio']))
+                                        ? $_POST['productos_'][$contador]['precio']
+                                        : $producto['precio'];
+
+                                    ?>
+
                             <tr>
                                 <td>
-                                    <input type="hidden" name="productos_['<?php echo $contador ?>'][id_producto]" value="<?php echo $producto['id_producto'] ?>">
-                                    <input type="number" name="productos_['<?php echo $contador ?>'][cantidad]">
+                                    <input type="hidden" name="productos_[<?php echo $contador ?>][id_producto]" value="<?php echo $producto['id_producto'] ?>">
+                                    <input type="number" name="productos_[<?php echo $contador ?>][cantidad]" value="<?php echo @$cantidad_actual ?>">
                                     <!-- <input type="number" required min="1"> -->
                                 </td>
                                 <td>
                                     <input type="text" readonly disabled value="<?php echo $producto['descripcion'] ?>">
                                 </td>
                                 <td>
-                                    <input type="text" name="productos_['<?php echo $contador ?>'][precio]" value="<?php echo $producto['precio'] ?>">
+                                    <input type="text" name="productos_[<?php echo $contador ?>][precio]" value="<?php echo @$precio_actual ?>">
                                 </td>
                             </tr>
 
                             <?php $contador++ ?>
-
 
                         <?php endforeach; ?>
                     </table>
