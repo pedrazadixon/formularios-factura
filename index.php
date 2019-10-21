@@ -4,3 +4,4 @@
     
 <a href="facturas"><button>Facturas</button></a></p>
 <p><a href="productos"><button>Productos</button></a></p>
+<p><a href="clientes"><button>Clientes</button></a></p>
