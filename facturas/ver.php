@@ -76,7 +76,7 @@ $conn->close();
             <?php foreach ($factura as $key => $producto) : ?>
 
                 <tr>
-                    <td><?php echo $producto['cantidad'] ?></td>
+                    <td><?php echo $producto['cantidad_factura'] ?></td>
                     <td><?php echo $producto['descripcion'] ?></td>
                     <td><?php echo $producto['precio_factura'] ?></td>
                     <td><?php echo $producto['cantidad'] ?></td>
@@ -86,9 +86,7 @@ $conn->close();
             <?php endforeach ?>
 
             <tr>
-                <td></td>
-                <td></td>
-                <td><b>Total:</b></td>
+                <td colspan="3" style="text-align: right;"><b>Total:</b></td>
                 <td>$xxxxx</td>
             </tr>
 

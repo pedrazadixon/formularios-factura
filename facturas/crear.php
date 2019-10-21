@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 foreach ($_POST['productos_'] as $key => $producto_factura) {
 
-                    $sql = "INSERT INTO `facturas_productos` (`id_facturas_productos`, `factura_id`, `producto_id`, `cantidad`, `precio_factura`) 
+                    $sql = "INSERT INTO `facturas_productos` (`id_facturas_productos`, `factura_id`, `producto_id`, `cantidad_factura`, `precio_factura`) 
                         VALUES (NULL, '" . $id_factura . "', '" . $producto_factura["id_producto"] . "', '" . $producto_factura["cantidad"] . "', '" . $producto_factura["precio"] . "')";
 
                     echo $sql;
