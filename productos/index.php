@@ -45,7 +45,9 @@ $conn->close();
             <td><?php echo $producto['cantidad'] ?></td>
             <td>
                 <a href=""><button>Modificar</button></a>
-                <a href=""><button>Eliminar</button></a>
+                <a href="borrar.php?id=<?php echo $producto['id'] ?>" onclick="return confirm('Estas seguro?')">
+                    <button>Eliminar</button>
+                </a>
             </td>
         </tr>
     <?php endforeach; ?>
