@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 21, 2019 at 03:47 PM
+-- Generation Time: Oct 21, 2019 at 10:25 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -56,7 +56,8 @@ CREATE TABLE `facturas_productos` (
   `id_facturas_productos` int(11) NOT NULL,
   `factura_id` int(11) NOT NULL,
   `producto_id` int(11) NOT NULL,
-  `precio` float NOT NULL
+  `cantidad_factura` int(11) NOT NULL,
+  `precio_factura` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
