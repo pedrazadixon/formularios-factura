@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "UPDATE `clientes` SET `razon_social` = '" . $_POST["razon_social"] . "', `nit` = '" . $_POST["nit"] . "' 
-            WHERE `id` = " . $_GET['id'];
+            WHERE `id_cliente` = " . $_GET['id'];
 
     if ($conn->query($sql) === TRUE) {
         echo "El cliente se modifico correctamente";
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$sql = "SELECT * FROM `clientes` WHERE `id` = " . $_GET['id'];
+$sql = "SELECT * FROM `clientes` WHERE `id_cliente` = " . $_GET['id'];
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

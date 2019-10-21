@@ -43,13 +43,13 @@ $conn->close();
 
         <?php foreach ($productos as $key => $producto) : ?>
             <tr>
-                <td><?php echo $producto['id'] ?></td>
+                <td><?php echo $producto['id_producto'] ?></td>
                 <td><?php echo $producto['descripcion'] ?></td>
                 <td><?php echo $producto['precio'] ?></td>
                 <td><?php echo $producto['cantidad'] ?></td>
                 <td>
-                    <a href="actualizar.php?id=<?php echo $producto['id'] ?>"><button>Modificar</button></a>
-                    <a href="borrar.php?id=<?php echo $producto['id'] ?>" onclick="return confirm('Estas seguro?')">
+                    <a href="actualizar.php?id=<?php echo $producto['id_producto'] ?>"><button>Modificar</button></a>
+                    <a href="borrar.php?id=<?php echo $producto['id_producto'] ?>" onclick="return confirm('Estas seguro?')">
                         <button>Eliminar</button>
                     </a>
                 </td>

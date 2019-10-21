@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     exit("Conexion fallida: " . $conn->connect_error);
 }
 
-$sql = "DELETE FROM `clientes` WHERE `id` = " . $_GET["id"];
+$sql = "DELETE FROM `clientes` WHERE `id_cliente` = " . $_GET["id"];
 
 if ($conn->query($sql) === TRUE) {
     header('Location: ./index.php');

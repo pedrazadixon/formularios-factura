@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("conexion fallida: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO clientes (id, nit, razon_social) VALUES (NULL, '" . $_POST["nit"] . "', '" . $_POST["razon_social"] . "')";
+    $sql = "INSERT INTO clientes (id_cliente, nit, razon_social) VALUES (NULL, '" . $_POST["nit"] . "', '" . $_POST["razon_social"] . "')";
 
     if ($conn->query($sql) === TRUE) {
         header('Location: index.php');

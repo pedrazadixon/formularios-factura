@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("conexion fallida: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO productos (id, descripcion, precio, cantidad) VALUES (NULL, '" . $_POST["descripcion"] . "', '" . $_POST["precio"] . "', '" . $_POST["cantidad"] . "')";
+    $sql = "INSERT INTO productos (id_producto, descripcion, precio, cantidad) VALUES (NULL, '" . $_POST["descripcion"] . "', '" . $_POST["precio"] . "', '" . $_POST["cantidad"] . "')";
 
     if ($conn->query($sql) === TRUE) {
         header('Location: index.php');

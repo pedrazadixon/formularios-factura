@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 21, 2019 at 03:28 PM
+-- Generation Time: Oct 21, 2019 at 03:47 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.19
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `clientes` (
-  `id` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
   `razon_social` varchar(255) NOT NULL,
   `nit` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -41,7 +41,7 @@ CREATE TABLE `clientes` (
 --
 
 CREATE TABLE `facturas` (
-  `id` int(11) NOT NULL,
+  `id_factura` int(11) NOT NULL,
   `cliente_id` int(11) NOT NULL,
   `fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -53,7 +53,7 @@ CREATE TABLE `facturas` (
 --
 
 CREATE TABLE `facturas_productos` (
-  `id` int(11) NOT NULL,
+  `id_facturas_productos` int(11) NOT NULL,
   `factura_id` int(11) NOT NULL,
   `producto_id` int(11) NOT NULL,
   `precio` float NOT NULL
@@ -66,7 +66,7 @@ CREATE TABLE `facturas_productos` (
 --
 
 CREATE TABLE `productos` (
-  `id` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
   `descripcion` varchar(255) NOT NULL,
   `precio` float NOT NULL,
   `cantidad` int(11) NOT NULL
@@ -80,25 +80,25 @@ CREATE TABLE `productos` (
 -- Indexes for table `clientes`
 --
 ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_cliente`);
 
 --
 -- Indexes for table `facturas`
 --
 ALTER TABLE `facturas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_factura`);
 
 --
 -- Indexes for table `facturas_productos`
 --
 ALTER TABLE `facturas_productos`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_facturas_productos`);
 
 --
 -- Indexes for table `productos`
 --
 ALTER TABLE `productos`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_producto`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -108,25 +108,25 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `facturas`
 --
 ALTER TABLE `facturas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
 
 --
 -- AUTO_INCREMENT for table `facturas_productos`
 --
 ALTER TABLE `facturas_productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_facturas_productos` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

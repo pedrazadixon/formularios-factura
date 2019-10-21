@@ -45,12 +45,12 @@ $conn->close();
 
         <?php foreach ($clientes as $key => $cliente) : ?>
             <tr>
-                <td><?php echo $cliente['id'] ?></td>
+                <td><?php echo $cliente['id_cliente'] ?></td>
                 <td><?php echo $cliente['nit'] ?></td>
                 <td><?php echo $cliente['razon_social'] ?></td>
                 <td>
-                    <a href="actualizar.php?id=<?php echo $cliente['id'] ?>"><button>Modificar</button></a>
-                    <a href="borrar.php?id=<?php echo $cliente['id'] ?>" onclick="return confirm('Estas seguro?')">
+                    <a href="actualizar.php?id=<?php echo $cliente['id_cliente'] ?>"><button>Modificar</button></a>
+                    <a href="borrar.php?id=<?php echo $cliente['id_cliente'] ?>" onclick="return confirm('Estas seguro?')">
                         <button>Eliminar</button>
                     </a>
                 </td>

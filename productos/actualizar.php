@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "UPDATE `productos` SET `descripcion` = '" . $_POST["descripcion"] . "', `precio` = '" . $_POST["precio"] . "', `cantidad` = '" . $_POST["cantidad"] . "' 
-            WHERE `productos`.`id` = " . $_GET['id'];
+            WHERE `productos`.`id_producto` = " . $_GET['id'];
 
     if ($conn->query($sql) === TRUE) {
         echo "El producto se modifico correctamente";
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$sql = "SELECT * FROM `productos` WHERE `id` = " . $_GET['id'];
+$sql = "SELECT * FROM `productos` WHERE `id_producto` = " . $_GET['id'];
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
