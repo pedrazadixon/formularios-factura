@@ -8,7 +8,7 @@
             Precio: <input name="precio" type="number"><br>
             Cantidad: <input name="cantidad" type="number"><br>
             <br>
-            <a href="index.php"><button type="button"><< volver</button> </a>
+            <a href="index.php"><button type="button"><< volver</button></a>
             <button type="submit">Guardar</button>
         </fieldset>
     </form>
@@ -33,7 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "INSERT INTO productos (id, descripcion, precio, cantidad) VALUES (NULL, '" . $_POST["descripcion"] . "', '" . $_POST["precio"] . "', '" . $_POST["cantidad"] . "')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "El producto se guardo correctamente";
+        header('Location: index.php');
+        die();
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

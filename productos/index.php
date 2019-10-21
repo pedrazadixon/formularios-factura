@@ -28,31 +28,37 @@ $conn->close();
 <a href="crear.php"><button> + Nuevo Producto</button></a>
 <hr>
 
-<table border="1">
-    <tr>
-        <th>Id</th>
-        <th>Descripción</th>
-        <th>Precio</th>
-        <th>Cantidad</th>
-        <th>Acciones</th>
-    </tr>
+<?php if(empty($productos)): ?>
+    <p>Aún no hay productos registrados.</p>
+<?php else: ?>
 
-    <?php foreach ($productos as $key => $producto) : ?>
+    <table border="1">
         <tr>
-            <td><?php echo $producto['id'] ?></td>
-            <td><?php echo $producto['descripcion'] ?></td>
-            <td><?php echo $producto['precio'] ?></td>
-            <td><?php echo $producto['cantidad'] ?></td>
-            <td>
-                <a href="actualizar.php?id=<?php echo $producto['id'] ?>"><button>Modificar</button></a>
-                <a href="borrar.php?id=<?php echo $producto['id'] ?>" onclick="return confirm('Estas seguro?')">
-                    <button>Eliminar</button>
-                </a>
-            </td>
+            <th>Id</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Acciones</th>
         </tr>
-    <?php endforeach; ?>
 
-</table>
+        <?php foreach ($productos as $key => $producto) : ?>
+            <tr>
+                <td><?php echo $producto['id'] ?></td>
+                <td><?php echo $producto['descripcion'] ?></td>
+                <td><?php echo $producto['precio'] ?></td>
+                <td><?php echo $producto['cantidad'] ?></td>
+                <td>
+                    <a href="actualizar.php?id=<?php echo $producto['id'] ?>"><button>Modificar</button></a>
+                    <a href="borrar.php?id=<?php echo $producto['id'] ?>" onclick="return confirm('Estas seguro?')">
+                        <button>Eliminar</button>
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+
+    </table>
+
+<?php endif; ?>
 
 <hr>
 
