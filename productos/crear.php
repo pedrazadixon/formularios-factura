@@ -1,21 +1,22 @@
+<h2>Crear Producto</h2>
+<hr>
 <div style="width: 50%;">
     <form action="crear.php" method="post">
         <fieldset>
-            <legend>Crear nuevo producto:</legend>
+            <legend>Datos del producto:</legend>
             Nombre: <input name="descripcion" type="text"><br>
             Precio: <input name="precio" type="number"><br>
             Cantidad: <input name="cantidad" type="number"><br>
-            <button type="submit">Crear</button>
+            <br>
+            <a href="index.php"><button type="button">Cancelar</button></a>
+            <button type="submit">Guardar</button>
         </fieldset>
     </form>
 </div>
 
-
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-
 
     $servername = "localhost";
     $username = "root";
