@@ -19,10 +19,8 @@ if ($result->num_rows > 0) {
 } else {
     $clientes = null;
 }
+
 $conn->close();
-
-// exit(print_r($clientes));
-
 
 ?>
 
