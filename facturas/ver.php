@@ -79,7 +79,7 @@ $conn->close();
                     <td><?php echo $producto['cantidad_factura'] ?></td>
                     <td><?php echo $producto['descripcion'] ?></td>
                     <td><?php echo $producto['precio_factura'] ?></td>
-                    <td><?php echo $producto['cantidad'] ?></td>
+                    <td><?php echo $total_factura = $producto['cantidad_factura'] * $producto['precio_factura'] ?></td>
 
                 </tr>
 

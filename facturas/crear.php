@@ -139,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             <?php
                                     @$cantidad_actual = $_POST['productos_'][$contador]['cantidad'];
-                                    @$precio_actual = (isset($_POST['productos_'][$contador]['precio']) && !empty($_POST['productos_'][$contador]['precio']))
+                                    @$precio_actual = (isset($_POST['productos_'][$contador]['precio']) && $_POST['productos_'][$contador]['precio'] != '')
                                         ? $_POST['productos_'][$contador]['precio']
                                         : $producto['precio'];
 
@@ -147,15 +147,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             <tr>
                                 <td>
-                                    <input type="hidden" name="productos_[<?php echo $contador ?>][id_producto]" value="<?php echo $producto['id_producto'] ?>">
-                                    <input type="number" name="productos_[<?php echo $contador ?>][cantidad]" value="<?php echo @$cantidad_actual ?>">
+                                    <input type="hidden" name="productos_[<?php echo $contador ?>][id_producto]" value="<?php echo $producto['id_producto'] ?>" required>
+                                    <input type="number" min="1" name="productos_[<?php echo $contador ?>][cantidad]" value="<?php echo @$cantidad_actual ?>" required>
                                     <!-- <input type="number" required min="1"> -->
                                 </td>
                                 <td>
                                     <input type="text" readonly disabled value="<?php echo $producto['descripcion'] ?>">
                                 </td>
                                 <td>
-                                    <input type="text" name="productos_[<?php echo $contador ?>][precio]" value="<?php echo @$precio_actual ?>">
+                                    <input type="number"  min="0" name="productos_[<?php echo $contador ?>][precio]" value="<?php echo @$precio_actual ?>" required>
                                 </td>
                             </tr>
 

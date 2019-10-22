@@ -4,8 +4,8 @@
     <form action="crear.php" method="post">
         <fieldset>
             <legend>Datos del cliente:</legend>
-            NIT: <input name="nit" type="text"><br>
-            Razon Social: <input name="razon_social" type="text"><br>
+            NIT: <input name="nit" type="number" min="1" required><br>
+            Razon Social: <input name="razon_social" type="text" required><br>
             <br>
             <a href="index.php"><button type="button"><< volver</button></a>
             <button type="submit">Guardar</button>
@@ -35,8 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: index.php');
         die();
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+        //echo "Error: " . $sql . "<br>" . $conn->error;
+		echo "Nit ya existente por favor vuelve a intentarlo";
+	}
 
     $conn->close();
 }
