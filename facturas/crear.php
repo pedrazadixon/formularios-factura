@@ -137,7 +137,7 @@ require('../vistas/header.html');
                     <tr>
                         <td>
                             <input class="form-control" type="hidden" name="productos_[<?php echo $contador ?>][id_producto]" value="<?php echo $producto['id_producto'] ?>" required>
-                            <input class="form-control" type="number" min="1" max="<?php echo $producto['cantidad'] ?>" name="productos_[<?php echo $contador ?>][cantidad]" value="<?php echo @$cantidad_actual ?>" required>
+                            <input class="form-control" type="number" min="1" max="<?php echo $producto['cantidad'] ?>" name="productos_[<?php echo $contador ?>][cantidad]" value="<?php //echo @$cantidad_actual ?><?php echo $producto['cantidad'] ?>" required>
                         </td>
                         <td>
                             <input class="form-control" type="text" readonly disabled value="<?php echo $producto['descripcion'] ?>">

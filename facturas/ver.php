@@ -14,6 +14,9 @@ if ($conn->connect_error) {
 $sql = "SELECT * 
             FROM facturas 
             INNER JOIN clientes ON clientes.id_cliente = facturas.cliente_id 
+            INNER JOIN telefonos ON telefonos.id_cliente = facturas.cliente_id 
+            INNER JOIN direcciones ON direcciones.id_cliente = facturas.cliente_id 
+            INNER JOIN emails ON emails.id_cliente = facturas.cliente_id 
             INNER JOIN facturas_productos ON facturas_productos.factura_id = facturas.id_factura 
             INNER JOIN productos ON productos.id_producto = facturas_productos.producto_id
         WHERE facturas.id_factura = " . $_GET['id'];
@@ -22,6 +25,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     $factura = $result->fetch_all(MYSQLI_ASSOC);
+    
 } else {
     $factura = null;
 }
@@ -57,8 +61,8 @@ require('../vistas/header.html');
                         <b>Cliente: </b>
                         <?php echo $factura[0]['razon_social'] ?><br>
                         <b>NIT: </b> <?php echo $factura[0]['nit'] ?><br>
-                        xxxxxxxxxx <br>
-                        xxxxxxx <br>
+                        <b>Dirección: </b><?php echo$factura[0]['direccion']?> <br>
+                        <b>Telefono: </b><?php echo$factura[0]['telefono']?> <br>
                     </td>
                 </tr>
 
