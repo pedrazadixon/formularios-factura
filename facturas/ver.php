@@ -27,74 +27,78 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 
+require('../vistas/header.html');
 ?>
 
-
-<fieldset style="width: 50%;">
-    <legend>Factura de venta</legend>
-
-    <table cellspacing="15">
-        <tr>
-            <td>
-                <b>Factura Numero #:</b> <?php echo $factura[0]['id_factura'] ?>
-            </td>
-            <td>
-                <b>Fecha:</b> <?php echo $factura[0]['fecha'] ?>
-            </td>
-            <!-- <td colspan="4"><b>Fecha: </b>2019-01-01</td> -->
-        </tr>
-        <tr>
-            <td>
-                <b>Provedor</b><br>
-                Universidad Cooperativa de Colombia <br>
-                NIT: 0000000-1 <br>
-                Cl. 39 #14-39, Bogotá<br>
-                (1) 332 3565<br>
-            </td>
-            <td>
-                <b>Cliente</b><br>
-                <?php echo $factura[0]['razon_social'] ?><br>
-                NIT: <?php echo $factura[0]['nit'] ?><br>
-                xxxxxxxxxx <br>
-                xxxxxxx <br>
-            </td>
-        </tr>
-
-    </table>
-
-    <fieldset>
-        <legend>Productos</legend>
-
-        <table cellpadding="5" cellspacing="5" border="1" style="border-collapse: collapse; width: 100%;">
-            <tr>
-                <th>Cantidad</th>
-                <th>Descripción</th>
-                <th>Valor und</th>
-                <th>Total</th>
-            </tr>
-
-            <?php foreach ($factura as $key => $producto) : ?>
-
+<div class="container">
+    <div class="col-md-8 my-5 mx-auto text-center">
+        <fieldset >
+            <legend>Factura de venta</legend>
+            <center>
+            <table cellspacing="25" class="w-100">
                 <tr>
-                    <td><?php echo $producto['cantidad_factura'] ?></td>
-                    <td><?php echo $producto['descripcion'] ?></td>
-                    <td><?php echo $producto['precio_factura'] ?></td>
-                    <td><?php echo $total_factura = $producto['cantidad_factura'] * $producto['precio_factura'] ?></td>
-
+                    <td>
+                        <b>Factura Numero #:</b> <?php echo $factura[0]['id_factura'] ?>
+                    </td>
+                    <td>
+                        <b>Fecha:</b> <?php echo $factura[0]['fecha'] ?>
+                    </td>
+                    <!-- <td colspan="4"><b>Fecha: </b>2019-01-01</td> -->
+                </tr>
+                <tr>
+                    <td>
+                        <b>Provedor: </b>
+                        Universidad Cooperativa de Colombia <br>
+                        <b>NIT: </b> 0000000-1 <br>
+                        <b>Dirección: </b>Cl. 39 #14-39, Bogotá<br>
+                        <b>Télefono: </b>(1) 332 3565<br>
+                    </td>
+                    <td>
+                        <b>Cliente: </b>
+                        <?php echo $factura[0]['razon_social'] ?><br>
+                        <b>NIT: </b> <?php echo $factura[0]['nit'] ?><br>
+                        xxxxxxxxxx <br>
+                        xxxxxxx <br>
+                    </td>
                 </tr>
 
-            <?php endforeach ?>
+            </table>
+            </center>
 
-            <tr>
-                <td colspan="3" style="text-align: right;"><b>Total:</b></td>
-                <td>$xxxxx</td>
-            </tr>
+            <fieldset class="mt-5">
+                <legend>Productos</legend>
 
-        </table>
+                <table cellpadding="5" cellspacing="5" border="0" style="border-collapse: collapse; width: 100%;">
+                    <tr>
+                        <th>Cantidad</th>
+                        <th>Descripción</th>
+                        <th>Valor und</th>
+                        <th>Total</th>
+                    </tr>
 
-    </fieldset>
+                    <?php foreach ($factura as $key => $producto) : ?>
 
-</fieldset>
-<br>
-<a href="./"><button>
-        << volver</button> </a>
+                    <tr>
+                        <td><?php echo $producto['cantidad_factura'] ?></td>
+                        <td><?php echo $producto['descripcion'] ?></td>
+                        <td><?php echo $producto['precio_factura'] ?></td>
+                        <td><?php echo $total_factura = $producto['cantidad_factura'] * $producto['precio_factura'] ?></td>
+
+                    </tr>
+
+                    <?php endforeach ?>
+
+                    <tr>
+                        <td colspan="3" style="text-align: right;"><b>Total:</b></td>
+                        <td>$xxxxx</td>
+                    </tr>
+
+                </table>
+
+            </fieldset>
+
+        </fieldset>
+             <br>
+            <a href="./"><button class="btn btn-primary">VOLVER</button> </a>
+    </div>
+</div>

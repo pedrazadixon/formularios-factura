@@ -21,19 +21,21 @@ if ($result->num_rows > 0) {
 }
 
 $conn->close();
-
+require('../vistas/header.html');
 ?>
+<div class="container">
+<div class="my-4 text-center">
 
 <h2>Clientes</h2>
 <hr>
-<a href="crear.php"><button> + Nuevo Cliente</button></a>
+<a class="btn btn-primary " href="crear.php">Nuevo Cliente</a>
 <hr>
 
 <?php if(empty($clientes)): ?>
     <p>Aún no hay clientes registrados.</p>
 <?php else: ?>
-
-    <table border="1">
+<div class="row col-md-12 d-flex justify-content-center align-items-center">
+    <table class="col-md-8 " border="0">
         <tr>
             <th>Id</th>
             <th>Nit</th>
@@ -47,21 +49,21 @@ $conn->close();
                 <td><?php echo $cliente['nit'] ?></td>
                 <td><?php echo $cliente['razon_social'] ?></td>
                 <td>
-                    <a href="actualizar.php?id=<?php echo $cliente['id_cliente'] ?>"><button>Modificar</button></a>
-                    <a href="borrar.php?id=<?php echo $cliente['id_cliente'] ?>" onclick="return confirm('Estas seguro?')">
-                        <button>Eliminar</button>
+                    <a class="btn btn-primary " href="actualizar.php?id=<?php echo $cliente['id_cliente'] ?>">Modificar</a>
+                    <a class="btn btn-primary " href="borrar.php?id=<?php echo $cliente['id_cliente'] ?>" onclick="return confirm('Estas seguro?')">
+                        Eliminar
                     </a>
                 </td>
             </tr>
         <?php endforeach; ?>
 
     </table>
+</div>
 
 <?php endif; ?>
 
 
+<a class="btn btn-primary " href="../">volver</a>
 
-
-<hr>
-
-<a href="../"><button><< volver</button></a>
+</div>
+</div>

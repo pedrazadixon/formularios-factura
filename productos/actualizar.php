@@ -33,7 +33,7 @@ if ($result->num_rows > 0) {
 }
 
 $conn->close();
-
+require('../vistas/header.html');
 ?>
 
 <h2>Modificar Producto</h2>

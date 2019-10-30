@@ -1,20 +1,45 @@
-<h2>Crear Producto</h2>
-<hr>
-<div style="width: 50%;">
-    <form action="crear.php" method="post">
-        <fieldset>
-            <legend>Datos del producto:</legend>
-            Nombre: <input name="descripcion" type="text"><br>
-            Precio: <input name="precio" type="number"><br>
-            Cantidad: <input name="cantidad" type="number"><br>
-            <br>
-            <a href="index.php"><button type="button"><< volver</button></a>
-            <button type="submit">Guardar</button>
-        </fieldset>
-    </form>
-</div>
+<?php require('../vistas/header.html');?>
 
-<?php
+<div class="container text-center mt-5">
+
+    <div class="form-group">
+
+        <h2>Crear Producto</h2>
+
+
+        <form form-signin action="crear.php" method="post">
+            <fieldset>
+                <legend>Datos del producto:</legend>
+                Nombre: <input class="form-control" name="descripcion" type="text"><br>
+                Precio: <input class="form-control" name="precio" type="number"><br>
+                Cantidad: <input class="form-control" name="cantidad" type="number"><br>
+                <br>
+                <a class="btn btn-primary " href="index.php">volver</a> <button class="btn btn-primary " type="submit">Guardar</button>
+            </fieldset>
+        </form>
+    </div>
+    </div>
+    <style>
+                  
+            .form-control {
+                display: inline !important;
+                width: auto !important;
+                height: calc(1.5em + .75rem + 2px);
+                padding: .375rem .75rem;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #495057;
+                background-color: #fff;
+                background-clip: padding-box;
+                border: 1px solid #ced4da;
+                border-radius: .25rem;
+                transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            }
+        </style>
+</body>
+
+    <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

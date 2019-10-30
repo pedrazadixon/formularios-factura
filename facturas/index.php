@@ -21,19 +21,22 @@ if ($result->num_rows > 0) {
 }
 
 $conn->close();
-
+require('../vistas/header.html');
 ?>
-
-<h2>Facturas</h2>
-<hr>
-<a href="crear.php"><button> + Nuevo Factura</button></a>
-<hr>
+<div class="container ">
+    <div class="col-md-12 my-5 mx-auto text-center ">
+        <h2>Facturas</h2>
+            <hr>
+            <a class="btn btn-primary" href="crear.php">Nueva Factura</a>
+            <hr>
+    </div>
 
 <?php if(empty($facturas)): ?>
     <p>Aún no hay facturas registradas.</p>
 <?php else: ?>
 
-    <table border="1">
+    <div class="row col-md-12 d-flex justify-content-center align-items-center">
+    <table class="col-md-8 " border="0">
         <tr>
             <th>Num. Factura</th>
             <th>Cliente NIT</th>
@@ -41,23 +44,27 @@ $conn->close();
             <th>Fecha</th>
             <th>Acciones</th>
         </tr>
-
+ 
         <?php foreach ($facturas as $key => $factura) : ?>
             <tr>
                 <td><?php echo $factura['id_factura'] ?></td>
                 <td><?php echo $factura['nit'] ?></td>
                 <td><?php echo $factura['razon_social'] ?></td>
                 <td><?php echo $factura['fecha'] ?></td>
-                <td>
-                    <a href="ver.php?id=<?php echo $factura['id_factura'] ?>"><button>Ver</button></a>
+                <td class="d-flex justify-content-center ">
+                    <a class="btn btn-primary " href="ver.php?id=<?php echo $factura['id_factura'] ?>">Ver</a>
                 </td>
             </tr>
         <?php endforeach; ?>
 
     </table>
+</div>
 
 <?php endif; ?>
 
 <hr>
-
-<a href="../"><button><< volver</button></a>
+<div class="row d-flex justify-content-center align-items-center">
+<a href="../" class="btn btn-primary">VOLVER</button></a>
+</div>
+</div>
+</div>

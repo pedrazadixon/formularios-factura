@@ -20,19 +20,20 @@ if ($result->num_rows > 0) {
     $productos = null;
 }
 $conn->close();
-
+require('../vistas/header.html');
 ?>
+<div class="container">
 
+<div class="my-4 text-center">
 <h2>Productos</h2>
-<hr>
-<a href="crear.php"><button> + Nuevo Producto</button></a>
-<hr>
+<a class="btn btn-primary mt-5 " href="crear.php"> Nuevo Producto</a>
+</div>
 
 <?php if(empty($productos)): ?>
     <p>Aún no hay productos registrados.</p>
 <?php else: ?>
-
-    <table border="1">
+<div class="row col-md-12 d-flex justify-content-center align-items-center">
+    <table class="col-md-8 " border="0">
         <tr>
             <th>Id</th>
             <th>Descripción</th>
@@ -48,18 +49,22 @@ $conn->close();
                 <td><?php echo $producto['precio'] ?></td>
                 <td><?php echo $producto['cantidad'] ?></td>
                 <td>
-                    <a href="actualizar.php?id=<?php echo $producto['id_producto'] ?>"><button>Modificar</button></a>
-                    <a href="borrar.php?id=<?php echo $producto['id_producto'] ?>" onclick="return confirm('Estas seguro?')">
-                        <button>Eliminar</button>
-                    </a>
+                    <a class="btn btn-primary " href="actualizar.php?id=<?php echo $producto['id_producto'] ?>">Modificar</a>
+                    <a class="btn btn-primary " href="borrar.php?id=<?php echo $producto['id_producto'] ?>" onclick="return confirm('Estas seguro?')">
+                       Eliminar</a>
                 </td>
             </tr>
         <?php endforeach; ?>
 
     </table>
 
+</div>
+<div class="my-4 text-center">
+<a class="btn btn-primary" href="../">Volver</a>
+</div>
+
 <?php endif; ?>
 
-<hr>
 
-<a href="../"><button><< volver</button></a>
+
+</div>
