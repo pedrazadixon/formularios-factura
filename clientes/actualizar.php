@@ -34,8 +34,16 @@ if ($result->num_rows > 0) {
 }
 
 $conn->close();
-require('../vistas/header.html');
 ?>
+
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <title>Facturas</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
 
 <h2>Modificar Cliente</h2>
 <hr>

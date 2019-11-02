@@ -30,9 +30,16 @@ if ($result->num_rows > 0) {
     $factura = null;
 }
 $conn->close();
-
-require('../vistas/header.html');
 ?>
+
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <title>Facturas</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
 
 <div class="container">
     <div class="col-md-8 my-5 mx-auto text-center">

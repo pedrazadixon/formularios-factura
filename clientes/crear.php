@@ -1,5 +1,11 @@
-<?php require('../vistas/header.html');
-?>
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <title>Facturas</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
 
 <div class="container text-center mt-5">
 <h2>Crear Cliente</h2>

@@ -20,8 +20,17 @@ if ($result->num_rows > 0) {
     $productos = null;
 }
 $conn->close();
-require('../vistas/header.html');
 ?>
+
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <title>Facturas</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
+
 <div class="container">
 
 <div class="my-4 text-center">

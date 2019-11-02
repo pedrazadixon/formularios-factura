@@ -1,9 +1,16 @@
-<?php require('vistas/header.html'); ?>
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <title>Facturas</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
 
 <div class="container">
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Facturas</h1>
+            <h1 class="jumbotron-heading" style="padding-top: 30px; padding-bottom: 30px;">Facturas</h1>
             <p class="lead text-muted">Universidad Cooperativa de Colombia </p>
         </div>
     </section>
