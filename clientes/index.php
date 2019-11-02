@@ -27,52 +27,61 @@ $conn->close();
 <html lang="es">
 
 <head>
-  <meta charset="utf-8">
-  <title>Facturas</title>
-  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>Facturas</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" crossorigin="anonymous">
 </head>
 
 <div class="container">
-<div class="my-4 text-center">
+    <div class="my-4 text-center">
 
-<h2>Clientes</h2>
-<hr>
-<a class="btn btn-primary " href="crear.php">Nuevo Cliente</a>
-<hr>
+        <h2>Clientes</h2>
+        <hr>
+        <a class="btn btn-success" href="crear.php">Nuevo Cliente</a>
+        <hr>
 
-<?php if(empty($clientes)): ?>
-    <p>Aún no hay clientes registrados.</p>
-<?php else: ?>
-<div class="row col-md-12 d-flex justify-content-center align-items-center">
-    <table class="col-md-8 table-striped">
-        <tr>
-            <th>Id</th>
-            <th>Nit</th>
-            <th>Razon Social</th>
-            <th>Acciones</th>
-        </tr>
+        <?php if (empty($clientes)) : ?>
+            <p>Aún no hay clientes registrados.</p>
+        <?php else : ?>
+            <div class="row col-md-12 d-flex justify-content-center align-items-center">
+                <table class="col-md-8 table-striped">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nit</th>
+                        <th>Razon Social</th>
+                        <th>Acciones</th>
+                    </tr>
 
-        <?php foreach ($clientes as $key => $cliente) : ?>
-            <tr>
-                <td><?php echo $cliente['id_cliente'] ?></td>
-                <td><?php echo $cliente['nit'] ?></td>
-                <td><?php echo $cliente['razon_social'] ?></td>
-                <td>
-                    <a class="btn btn-primary " href="actualizar.php?id=<?php echo $cliente['id_cliente'] ?>">Modificar</a>
-                    <a class="btn btn-primary " href="borrar.php?id=<?php echo $cliente['id_cliente'] ?>" onclick="return confirm('Estas seguro?')">
-                        Eliminar
-                    </a>
-                </td>
-            </tr>
-        <?php endforeach; ?>
+                    <?php foreach ($clientes as $key => $cliente) : ?>
+                        <tr>
+                            <td><?php echo $cliente['id_cliente'] ?></td>
+                            <td><?php echo $cliente['nit'] ?></td>
+                            <td><?php echo $cliente['razon_social'] ?></td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="ver_datos.php?id=<?php echo $cliente['id_cliente'] ?>">
+                                    Ver
+                                </a>
+                                <a class="btn btn-primary btn-sm" href="actualizar.php?id=<?php echo $cliente['id_cliente'] ?>">
+                                    Modificar
+                                </a>
+                                <a class="btn btn-primary btn-sm" href="borrar.php?id=<?php echo $cliente['id_cliente'] ?>" onclick="return confirm('Estas seguro?')">
+                                    Eliminar
+                                </a>
+                                <a class="btn btn-primary btn-sm" href="agregar_datos.php?id=<?php echo $cliente['id_cliente'] ?>">
+                                    Agregar Datos
+                                </a>
 
-    </table>
-</div>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
 
-<?php endif; ?>
+                </table>
+            </div>
 
-<br>
-<a class="btn btn-primary " href="../">volver</a>
+        <?php endif; ?>
 
-</div>
+        <br>
+        <a class="btn btn-danger " href="../">volver</a>
+
+    </div>
 </div>
