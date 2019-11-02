@@ -45,7 +45,7 @@ $conn->close();
 <?php else: ?>
 
     <div class="row col-md-12 d-flex justify-content-center align-items-center">
-    <table class="col-md-8 " border="0">
+    <table class="col-md-8 table-striped">
         <tr>
             <th>Num. Factura</th>
             <th>Cliente NIT</th>

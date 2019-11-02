@@ -8,16 +8,15 @@
 </head>
 
 <div class="container">
-    <section class="jumbotron text-center">
+    <section class="text-center">
         <div class="container">
-            <h1 class="jumbotron-heading" style="padding-top: 30px; padding-bottom: 30px;">Facturas</h1>
-            <p class="lead text-muted">Universidad Cooperativa de Colombia </p>
+            <h1 class="jumbotron-heading py-3" >Facturas</h1>
+            <p class="lead text-muted pb-4">Universidad Cooperativa de Colombia </p>
         </div>
     </section>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
                     <div class="card text-center" style="width: 18rem;">
                         <img src="assets/modulo_facturas.gif"
                             height="210" class="card-img" alt="CLIENTES">
@@ -28,7 +27,6 @@
                             <a href="facturas" class="btn btn-primary">FACTURAS</a>
                         </div>
                     </div>
-                </div>
             </div>
             <div class="col-md-4">
                 <div class="card text-center" style="width: 18rem;">

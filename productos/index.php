@@ -42,7 +42,7 @@ $conn->close();
     <p>Aún no hay productos registrados.</p>
 <?php else: ?>
 <div class="row col-md-12 d-flex justify-content-center align-items-center">
-    <table class="col-md-8 " border="0">
+    <table class="col-md-8 table-striped">
         <tr>
             <th>Id</th>
             <th>Descripción</th>
