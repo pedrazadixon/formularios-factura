@@ -12,7 +12,7 @@
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
                     <div class="card text-center" style="width: 18rem;">
-                        <img src="https://www.transfiriendo.com/wp-content/uploads/2019/02/ccu-superbowl-checkplease.gif"
+                        <img src="assets/modulo_facturas.gif"
                             height="210" class="card-img" alt="CLIENTES">
                         <div class="card-body">
                             <h5 class="card-title">Modulo Facturas</h5>
@@ -25,7 +25,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card text-center" style="width: 18rem;">
-                    <img src="https://thumbs.gfycat.com/GleamingReflectingCricket-size_restricted.gif" height="210"
+                    <img src="assets/modulo_productos.gif" height="210"
                         class="card-img" alt="CLIENTES">
                     <div class="card-body">
                         <h5 class="card-title">Modulo Productos</h5>
@@ -37,7 +37,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card text-center" style="width: 18rem;">
-                    <img src="https://i.imgur.com/rvb45Gu.gif" height="210" class="card-img" alt="CLIENTES">
+                    <img src="assets/modulo_clientes.gif" height="210" class="card-img" alt="CLIENTES">
                     <div class="card-body">
                         <h5 class="card-title">Modulo Clientes</h5>
                         <p class="card-text">Crear, Modificar y Eliminar
