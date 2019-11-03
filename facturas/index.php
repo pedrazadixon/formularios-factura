@@ -49,7 +49,7 @@ $conn->close();
             <p>Aún no hay facturas registradas.</p>
         <?php else : ?>
 
-            <table class="table">
+            <table class="table table-sm">
                 <tr>
                     <th>Num. Factura</th>
                     <th>Cliente NIT</th>
@@ -64,8 +64,8 @@ $conn->close();
                         <td><?php echo $factura['nit'] ?></td>
                         <td><?php echo $factura['razon_social'] ?></td>
                         <td><?php echo $factura['fecha'] ?></td>
-                        <td class="d-flex justify-content-center ">
-                            <a class="btn btn-primary " href="ver.php?id=<?php echo $factura['id_factura'] ?>">Ver</a>
+                        <td>
+                            <a class="btn btn-sm btn-primary " href="ver.php?id=<?php echo $factura['id_factura'] ?>">Ver</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

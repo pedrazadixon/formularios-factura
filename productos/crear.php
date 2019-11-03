@@ -1,52 +1,4 @@
-<!doctype html>
-<html lang="es">
-
-<head>
-  <meta charset="utf-8">
-  <title>Facturas</title>
-  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" crossorigin="anonymous">
-</head>
-
-<div class="container text-center mt-5">
-
-    <div class="form-group">
-
-        <h2>Crear Producto</h2>
-
-
-        <form form-signin action="crear.php" method="post">
-            <fieldset>
-                <legend>Datos del producto:</legend>
-                Nombre: <input class="form-control" name="descripcion" type="text"><br>
-                Precio: <input class="form-control" name="precio" type="number"><br>
-                Cantidad: <input class="form-control" name="cantidad" type="number"><br>
-                <br>
-                <a class="btn btn-primary " href="index.php">volver</a> <button class="btn btn-primary " type="submit">Guardar</button>
-            </fieldset>
-        </form>
-    </div>
-    </div>
-    <style>
-                  
-            .form-control {
-                display: inline !important;
-                width: auto !important;
-                height: calc(1.5em + .75rem + 2px);
-                padding: .375rem .75rem;
-                font-size: 1rem;
-                font-weight: 400;
-                line-height: 1.5;
-                color: #495057;
-                background-color: #fff;
-                background-clip: padding-box;
-                border: 1px solid #ced4da;
-                border-radius: .25rem;
-                transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-            }
-        </style>
-</body>
-
-    <?php
+<?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -74,6 +26,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn->close();
 }
 
-
-
 ?>
+
+<?php require_once '../sitio/cabecera.php' ?>
+
+<!-- Ruta-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="<?php echo BASE_URL_ ?>">Facturas UCC</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="<?php echo BASE_URL_ ?>productos">Productos</a>
+    </li>
+    <li class="breadcrumb-item active">Crear producto</li>
+</ol>
+
+<h4>Crear producto</h4>
+<hr>
+
+<div class="form-group w-50">
+    <form form-signin action="crear.php" method="post">
+        Nombre del producto: <input required class="form-control" name="descripcion" type="text">
+        Precio: <input required class="form-control" name="precio" type="number">
+        Cantidad: <input required class="form-control" name="cantidad" type="number">
+        <hr>
+        <a class="btn btn-danger" href="index.php">Cancelar</a> <button class="btn btn-success " type="submit"><span class="px-2">Guardar</span></button>
+    </form>
+</div>
+
+<?php require_once '../sitio/pie.php' ?>

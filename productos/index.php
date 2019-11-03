@@ -22,58 +22,69 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 
-<!doctype html>
-<html lang="es">
 
-<head>
-  <meta charset="utf-8">
-  <title>Facturas</title>
-  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" crossorigin="anonymous">
-</head>
 
-<div class="container">
+<?php require_once '../sitio/cabecera.php' ?>
 
-<div class="my-4 text-center">
-<h2>Productos</h2>
-<a class="btn btn-primary mt-5 " href="crear.php"> Nuevo Producto</a>
+<!-- Ruta-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="<?php echo BASE_URL_ ?>">Facturas UCC</a>
+    </li>
+    <li class="breadcrumb-item active">Productos</li>
+</ol>
+
+<h4>Productos</h4>
+<hr>
+
+<div class="row mb-3">
+    <div class="col-md-12">
+        <a class="btn btn-success" href="crear.php">Nuevo Producto</a>
+    </div>
 </div>
 
-<?php if(empty($productos)): ?>
-    <p>Aún no hay productos registrados.</p>
-<?php else: ?>
-<div class="row col-md-12 d-flex justify-content-center align-items-center">
-    <table class="col-md-8 table">
-        <tr>
-            <th>Id</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Acciones</th>
-        </tr>
+<div class="row">
+    <div class="col-md-12">
 
-        <?php foreach ($productos as $key => $producto) : ?>
-            <tr>
-                <td><?php echo $producto['id_producto'] ?></td>
-                <td><?php echo $producto['descripcion'] ?></td>
-                <td><?php echo $producto['precio'] ?></td>
-                <td><?php echo $producto['cantidad'] ?></td>
-                <td>
-                    <a class="btn btn-primary " href="actualizar.php?id=<?php echo $producto['id_producto'] ?>">Modificar</a>
-                    <a class="btn btn-primary " href="borrar.php?id=<?php echo $producto['id_producto'] ?>" onclick="return confirm('Estas seguro?')">
-                       Eliminar</a>
-                </td>
-            </tr>
-        <?php endforeach; ?>
+        <?php if (empty($productos)) : ?>
+            <p>Aún no hay productos registradas.</p>
+        <?php else : ?>
 
-    </table>
+            <table class="table table-sm">
+                <tr>
+                    <th>Id</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Acciones</th>
+                </tr>
 
+                <?php foreach ($productos as $key => $producto) : ?>
+                    <tr>
+                        <td><?php echo $producto['id_producto'] ?></td>
+                        <td><?php echo $producto['descripcion'] ?></td>
+                        <td><?php echo $producto['precio'] ?></td>
+                        <td><?php echo $producto['cantidad'] ?></td>
+                        <td>
+                            <a class="btn btn-sm btn-primary " href="actualizar.php?id=<?php echo $producto['id_producto'] ?>">Modificar</a>
+                            <a class="btn btn-sm btn-danger " href="borrar.php?id=<?php echo $producto['id_producto'] ?>" onclick="return confirm('¿Estas seguro?')">
+                                Eliminar</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+
+            </table>
+
+        <?php endif; ?>
+
+
+    </div>
 </div>
-<div class="my-4 text-center">
-<a class="btn btn-primary" href="../">Volver</a>
+
+<div class="row mb-3">
+    <div class="col-md-12">
+        <a href="<?php echo BASE_URL_ ?>" class="btn btn-danger">Volver</button></a>
+    </div>
 </div>
 
-<?php endif; ?>
-
-
-
-</div>
+<?php require_once '../sitio/pie.php' ?>

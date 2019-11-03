@@ -35,27 +35,30 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 
-<!doctype html>
-<html lang="es">
+<?php require_once '../sitio/cabecera.php' ?>
 
-<head>
-  <meta charset="utf-8">
-  <title>Facturas</title>
-  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" crossorigin="anonymous">
-</head>
+<!-- Ruta-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="<?php echo BASE_URL_ ?>">Facturas UCC</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="<?php echo BASE_URL_ ?>productos">Productos</a>
+    </li>
+    <li class="breadcrumb-item active">Modificar producto</li>
+</ol>
 
-<h2>Modificar Producto</h2>
+<h4>Modificar producto</h4>
 <hr>
-<div style="width: 50%;">
+
+<div class="form-group w-50">
     <form action="actualizar.php?id=<?php echo $_GET['id'] ?>" method="post">
-        <fieldset>
-            <legend>Datos del producto:</legend>
-            Nombre: <input name="descripcion" value="<?php echo $producto[0]['descripcion'] ?>" type="text"><br>
-            Precio: <input name="precio" value="<?php echo $producto[0]['precio'] ?>" type="number"><br>
-            Cantidad: <input name="cantidad" value="<?php echo $producto[0]['cantidad'] ?>" type="number"><br>
-            <br>
-            <a href="index.php"><button type="button"><< volver</button></a>
-            <button type="submit">Guardar</button>
-        </fieldset>
+        Nombre del producto: <input class="form-control" required name="descripcion" value="<?php echo $producto[0]['descripcion'] ?>" type="text">
+        Precio: <input class="form-control" required name="precio" value="<?php echo $producto[0]['precio'] ?>" type="number">
+        Cantidad: <input class="form-control" required name="cantidad" value="<?php echo $producto[0]['cantidad'] ?>" type="number">
+        <hr>
+        <a class="btn btn-danger" href="index.php">Cancelar</a> <button class="btn btn-success " type="submit"><span class="px-2">Guardar</span></button>
     </form>
 </div>
+
+<?php require_once '../sitio/pie.php' ?>
