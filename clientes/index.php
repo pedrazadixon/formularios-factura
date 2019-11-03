@@ -62,13 +62,13 @@ $conn->close();
                                     Ver
                                 </a>
                                 <a class="btn btn-primary btn-sm" href="actualizar.php?id=<?php echo $cliente['id_cliente'] ?>">
-                                    Modificar
-                                </a>
-                                <a class="btn btn-primary btn-sm" href="borrar.php?id=<?php echo $cliente['id_cliente'] ?>" onclick="return confirm('Estas seguro?')">
-                                    Eliminar
+                                    Modificar Cliente
                                 </a>
                                 <a class="btn btn-primary btn-sm" href="agregar_datos.php?id=<?php echo $cliente['id_cliente'] ?>">
-                                    Agregar Datos
+                                    Modificar Datos
+                                </a>
+                                <a class="btn btn-danger btn-sm" href="borrar.php?id=<?php echo $cliente['id_cliente'] ?>" onclick="return confirm('¿Estas seguro?')">
+                                    Eliminar
                                 </a>
 
                             </td>

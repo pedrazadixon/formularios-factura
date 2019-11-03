@@ -63,16 +63,47 @@ $conn->close();
 
 <h2>Datos del cliente</h2>
 <hr>
-<div style="width: 50%;">
-    <h5>cliente</h5>
-    <pre><?php print_r($cliente[0]) ?></pre>
-    <h5>direcciones</h5>
-    <pre><?php print_r($direcciones) ?></pre>
-    <h5>emails</h5>
-    <pre><?php print_r($emails) ?></pre>
-    <h5>telefonos</h5>
-    <pre><?php print_r($telefonos) ?></pre>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col" colspan="2">Datos del cliente</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Nit: </th>
+                <td><?php echo $cliente[0]['nit'] ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Razon Social: </th>
+                <td><?php echo $cliente[0]['razon_social'] ?></td>
+            </tr>
+            <?php for ($i = 0; $i < @count($direcciones); $i++) : ?>
+                <tr>
+                    <th scope="row">Direccion <?php echo $i + 1 ?>: </th>
+                    <td><?php echo $direcciones[$i]['dato'] ?></td>
+                </tr>
+            <?php endfor ?>
+            <?php for ($i = 0; $i < @count($telefonos); $i++) : ?>
+                <tr>
+                    <th scope="row">Telefono <?php echo $i + 1 ?>: </th>
+                    <td><?php echo $telefonos[$i]['dato'] ?></td>
+                </tr>
+            <?php endfor ?>
+            <?php for ($i = 0; $i < @count($emails); $i++) : ?>
+                <tr>
+                    <th scope="row">Email <?php echo $i + 1 ?>: </th>
+                    <td><?php echo $emails[$i]['dato'] ?></td>
+                </tr>
+            <?php endfor ?>
+        </tbody>
+    </table>
 
     <br>
-    <a href="index.php" class="btn btn-danger">Volver</a>
+    <div class="mt-3">
+        <a class="btn btn-danger" href="index.php">Volver</a>
+    </div>
+
 </div>
