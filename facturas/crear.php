@@ -79,73 +79,86 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Debe añadir al menos un producto.";
         }
     }
-
 }
 ?>
 
-<!doctype html>
-<html lang="es">
+<?php require_once '../sitio/cabecera.php' ?>
 
-<head>
-  <meta charset="utf-8">
-  <title>Facturas</title>
-  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" crossorigin="anonymous">
-</head>
+<!-- Ruta-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="<?php echo BASE_URL_ ?>">Facturas UCC</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="<?php echo BASE_URL_ ?>facturas">Facturas</a>
+    </li>
+    <li class="breadcrumb-item active">Crear factura</li>
+</ol>
 
-<div class="container text-center mt-5">
-    <h2>Crear Factura</h2>
-     <div class="form-group">
-        <form class="form-signin" action="crear.php" method="post">
-            <fieldset class="mx-auto col-md-5">
-                <legend>Datos de la factura:</legend>Cliente:
+<h4>Crear Factura</h4>
+<hr>
+
+<form class="form-signin" action="crear.php" method="post">
+
+<h6>Cliente:</h6>
+
+    <table class="table table-borderless w-75 ml-4">
+        <tr>
+            <td><b>Razon Social:</b></td>
+            <td>
                 <select class="form-control" name="cliente_id" onchange="this.form.submit()" required>
                     <option value="">Seleccionar...</option>
                     <?php foreach ($clientes as $key => $cliente) : ?>
-
-                    <?php
-                        if ($_POST['cliente_id'] == $cliente['id_cliente']) {
-                            $selected = "selected";
-                            $cliente_actual = $cliente;
-                        } else {
-                            $selected = "";
-                        }
-                        ?>
-
-                    <option value="<?php echo $cliente['id_cliente'] ?>" <?php echo $selected ?>>
-                        <?php echo $cliente['razon_social'] ?>
-                    </option>
-
+                        <?php if ($_POST['cliente_id'] == $cliente['id_cliente']) {
+                                $selected = "selected";
+                                $cliente_actual = $cliente;
+                            } else {
+                                $selected = "";
+                            } ?>
+                        <option value="<?php echo $cliente['id_cliente'] ?>" <?php echo $selected ?>>
+                            <?php echo $cliente['razon_social'] ?>
+                        </option>
                     <?php endforeach; ?>
-
                 </select>
-                <br>
-                NIT: <input class="form-control" type="text" value="<?php echo @$cliente_actual['nit'] ?>" readonly
-                    disabled>
-            </fieldset>
-            <legend>Productos</legend>
-            <input class="form-control" type="hidden" name="productos_factura" value="<?php echo @$productos_factura_input ?>">
-            <?php if (@!empty($productos_factura)) : ?>
-            <table class="col-4 mx-auto table table-striped" border="0">
-                <thead>
-                    <tr>
-                        <td><b>Cantidad</b></td>
-                        <td><b>ID</b></td>
-                        <td><b>Precio Und</b></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $contador = 1 ?>
-                    <?php foreach ($productos_factura as $key => $producto) : ?>
+            </td>
+            <td><b>Nit:</b></td>
+            <td><input class="form-control" type="text" value="<?php echo @$cliente_actual['nit'] ?>" readonly disabled></td>
+        </tr>
+        <tr>
+            <td><b>Direccion 1: </b></td>
+            <td>
+                cra 1 1 1
+            </td>
+            <td><b>Telefono 1</b></td>
+            <td>(1) 830 2323</td>
+        </tr>
+    </table>
+
+
+    <h6>Productos:</h6>
+   
+    <input class="form-control" type="hidden" name="productos_factura" value="<?php echo @$productos_factura_input ?>">
+    <?php if (@!empty($productos_factura)) : ?>
+        <table class="table">
+            <thead style="text-align:center">
+                <tr>
+                    <td>Cantidad</td>
+                    <td>Descripcion</td>
+                    <td>Precio Und.</td>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $contador = 1 ?>
+                <?php foreach ($productos_factura as $key => $producto) : ?>
                     <?php
-                                    @$cantidad_actual = $_POST['productos_'][$contador]['cantidad'];
-                                    @$precio_actual = (isset($_POST['productos_'][$contador]['precio']) && $_POST['productos_'][$contador]['precio'] != '')
-                                        ? $_POST['productos_'][$contador]['precio']
-                                        : $producto['precio'];
-                    ?>
+                            @$cantidad_actual = $_POST['productos_'][$contador]['cantidad'];
+                            @$precio_actual = (isset($_POST['productos_'][$contador]['precio']) && $_POST['productos_'][$contador]['precio'] != '') ? $_POST['productos_'][$contador]['precio'] : $producto['precio'];
+                            ?>
                     <tr>
                         <td>
                             <input class="form-control" type="hidden" name="productos_[<?php echo $contador ?>][id_producto]" value="<?php echo $producto['id_producto'] ?>" required>
-                            <input class="form-control" type="number" min="1" max="<?php echo $producto['cantidad'] ?>" name="productos_[<?php echo $contador ?>][cantidad]" value="<?php //echo @$cantidad_actual ?><?php echo $producto['cantidad'] ?>" required>
+                            <input class="form-control" type="number" min="1" max="<?php echo $producto['cantidad'] ?>" name="productos_[<?php echo $contador ?>][cantidad]" value="<?php //echo @$cantidad_actual 
+                                                                                                                                                                                            ?><?php echo $producto['cantidad'] ?>" required>
                         </td>
                         <td>
                             <input class="form-control" type="text" readonly disabled value="<?php echo $producto['descripcion'] ?>">
@@ -155,51 +168,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </td>
                     </tr>
                     <?php $contador++ ?>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-            <?php endif; ?>
-                <select class="form-control col-6" form-group name="producto">
-                    <option value="">Seleccine uno...</option>
-                    <?php foreach ($productos as $key => $producto) : ?>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
+
+    <div class="form-inline">
+        <div class="form-group mb-2 ml-2">
+            <select class="form-control form-control-sm mr-2" form-group name="producto">
+                <option value="">Seleccine uno...</option>
+                <?php foreach ($productos as $key => $producto) : ?>
                     <option value="<?php echo $producto['id_producto'] ?>">
                         <?php echo $producto['descripcion'] ?>
                     </option>
-                    <?php endforeach; ?>
-                </select>
-                <button class="btn btn-primary" type="submit">Añadir producto</button>
-            </fieldset>
-            <div class="mt-3">
-                <a class="btn btn-primary" href="index.php">Volver</a>
-                <button class=" btn btn-primary" type="submit" name="facturar" value="facturar">Guardar</button>
-            </div>
-        </form>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary mb-2">Añadir producto</button>
     </div>
-</div>
+
+<hr>
+
+    <div class="mt-3">
+        <a class="btn btn-danger mr-3" href="index.php">Cancelar</a>
+        <button class=" btn btn-success" type="submit" name="facturar" value="facturar"><span class="px-2">Guardar</span></button>
+    </div>
+</form>
 
 
-<style>
-    .table td,
-    .table th {
-        padding: 3px !important;
-        vertical-align: top;
-        border-top: 1px solid #c6d0da;
-    }
 
-    .form-control {
-        display: inline !important;
-        width: auto !important;
-        height: calc(1.5em + .75rem + 2px);
-        padding: .375rem .75rem;
-        font-size: 1rem;
-        font-weight: 400;
-        line-height: 1.5;
-        color: #495057;
-        background-color: #fff;
-        background-clip: padding-box;
-        border: 1px solid #ced4da;
-        border-radius: .25rem;
-        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    }
-</style>
-</body>
+<?php require_once '../sitio/pie.php' ?>
