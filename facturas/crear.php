@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <form class="form-signin" action="crear.php" method="post">
 
-<h6>Cliente:</h6>
+    <h6>Cliente:</h6>
 
     <table class="table table-borderless w-75 ml-4">
         <tr>
@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     <h6>Productos:</h6>
-   
+    
     <input class="form-control" type="hidden" name="productos_factura" value="<?php echo @$productos_factura_input ?>">
     <?php if (@!empty($productos_factura)) : ?>
         <table class="table">
@@ -157,8 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <tr>
                         <td>
                             <input class="form-control" type="hidden" name="productos_[<?php echo $contador ?>][id_producto]" value="<?php echo $producto['id_producto'] ?>" required>
-                            <input class="form-control" type="number" min="1" max="<?php echo $producto['cantidad'] ?>" name="productos_[<?php echo $contador ?>][cantidad]" value="<?php //echo @$cantidad_actual 
-                                                                                                                                                                                            ?><?php echo $producto['cantidad'] ?>" required>
+                            <input class="form-control" type="number" min="1" max="<?php echo $producto['cantidad'] ?>" name="productos_[<?php echo $contador ?>][cantidad]" value="<?php echo $producto['cantidad'] ?>" required>
                         </td>
                         <td>
                             <input class="form-control" type="text" readonly disabled value="<?php echo $producto['descripcion'] ?>">
@@ -178,8 +177,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <select class="form-control form-control-sm mr-2" form-group name="producto">
                 <option value="">Seleccine uno...</option>
                 <?php foreach ($productos as $key => $producto) : ?>
+                    <?php if (in_array($producto['id_producto'], $array_lista_productos)) continue ?>
                     <option value="<?php echo $producto['id_producto'] ?>">
-                        <?php echo $producto['descripcion'] ?>
+                        <?php echo $producto['descripcion'] ?> (<?php echo $producto['cantidad'] ?> disponibles)
                     </option>
                 <?php endforeach; ?>
             </select>
@@ -187,7 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="btn btn-sm btn-primary mb-2">Añadir producto</button>
     </div>
 
-<hr>
+    <hr>
 
     <div class="mt-3">
         <a class="btn btn-danger mr-1" href="index.php">Cancelar</a>
