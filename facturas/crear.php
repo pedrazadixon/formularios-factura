@@ -33,6 +33,22 @@ if ($result->num_rows > 0) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    if (isset($_POST['cliente_id']) && !empty($_POST['cliente_id'])) {
+        // direccion
+        $sql = "SELECT 
+                    clientes.nit,
+                    clientes.razon_social,
+                    (SELECT clientes_datos.dato FROM clientes_datos WHERE clientes_datos.cliente_id = " . $_POST['cliente_id'] . " AND clientes_datos.tipo = 3 LIMIT 1) AS direccion,
+                    (SELECT clientes_datos.dato FROM clientes_datos WHERE clientes_datos.cliente_id = " . $_POST['cliente_id'] . " AND clientes_datos.tipo = 2 LIMIT 1) AS telefono,
+                    (SELECT clientes_datos.dato FROM clientes_datos WHERE clientes_datos.cliente_id = " . $_POST['cliente_id'] . " AND clientes_datos.tipo = 1 LIMIT 1) AS email
+                FROM `clientes`
+                WHERE clientes.id_cliente = " . $_POST['cliente_id'];
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $datos_cliente = $result->fetch_all(MYSQLI_ASSOC);
+        }
+    }
+
     if (!empty($_POST['producto']) || !empty($_POST['productos_factura'])) {
 
         $productos_factura_input = $_POST['productos_factura'] . "," . $_POST['producto'];
@@ -127,10 +143,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <tr>
             <td><b>Direccion 1: </b></td>
             <td>
-                cra 1 1 1
+                <input class="form-control" type="text" value="<?php echo @$datos_cliente[0]['direccion'] ?>" readonly disabled>
             </td>
-            <td><b>Telefono 1</b></td>
-            <td>(1) 830 2323</td>
+            <td><b>Telefono 1:</b></td>
+            <td>
+                <input class="form-control" type="text" value="<?php echo @$datos_cliente[0]['telefono'] ?>" readonly disabled>
+            </td>
         </tr>
     </table>
 
