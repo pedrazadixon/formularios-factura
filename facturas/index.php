@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     exit("Conexion fallida: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM `facturas` INNER JOIN clientes ON clientes.id_cliente = facturas.cliente_id";
+$sql = "SELECT * FROM `facturas` INNER JOIN clientes ON clientes.id_cliente = facturas.cliente_id ORDER BY `facturas`.`fecha` DESC";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -60,12 +60,12 @@ $conn->close();
 
                 <?php foreach ($facturas as $key => $factura) : ?>
                     <tr>
-                        <td><?php echo $factura['id_factura'] ?></td>
+                        <td><?php echo $factura['id_factura'] ?> <?php echo ($key == 0) ? '<span class="badge badge-info">Ultima</span>' : '' ?></td>
                         <td><?php echo $factura['nit'] ?></td>
                         <td><?php echo $factura['razon_social'] ?></td>
                         <td><?php echo $factura['fecha'] ?></td>
                         <td>
-                            <a class="btn btn-sm btn-primary " href="ver.php?id=<?php echo $factura['id_factura'] ?>">Ver</a>
+                            <a target="blank" class="btn btn-sm btn-primary " href="ver.php?id=<?php echo $factura['id_factura'] ?>">Ver</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
