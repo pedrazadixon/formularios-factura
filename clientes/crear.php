@@ -1,47 +1,3 @@
-<!doctype html>
-<html lang="es">
-
-<head>
-  <meta charset="utf-8">
-  <title>Facturas</title>
-  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" crossorigin="anonymous">
-</head>
-
-<div class="container text-center mt-5">
-<h2>Crear Cliente</h2>
-    <div class="form-group">
-    <form action="crear.php" method="post">
-        <fieldset>
-            <legend>Datos del cliente:</legend>
-            NIT: <input class="form-control" name="nit" type="number" min="1" required><br>
-            Razon Social: <input class="form-control" name="razon_social" type="text" required><br>
-            <br>
-            <a class="btn btn-primary"  href="index.php">volver</a>
-            <button class="btn btn-primary"  type="submit">Guardar</button>
-        </fieldset>
-    </form>
-</div>
-</div>
-
-<style>
-                  
-                  .form-control {
-                      display: inline !important;
-                      width: auto !important;
-                      height: calc(1.5em + .75rem + 2px);
-                      padding: .375rem .75rem;
-                      font-size: 1rem;
-                      font-weight: 400;
-                      line-height: 1.5;
-                      color: #495057;
-                      background-color: #fff;
-                      background-clip: padding-box;
-                      border: 1px solid #ced4da;
-                      border-radius: .25rem;
-                      transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-                  }
-              </style>
-      </body>
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -65,12 +21,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die();
     } else {
         //echo "Error: " . $sql . "<br>" . $conn->error;
-		echo "Nit ya existente por favor vuelve a intentarlo";
-	}
+        echo "Nit ya existente por favor vuelve a intentarlo";
+    }
 
     $conn->close();
 }
-
-
-
 ?>
+
+<?php require_once '../sitio/cabecera.php' ?>
+
+<!-- Ruta-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="<?php echo BASE_URL_ ?>">Facturas UCC</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="<?php echo BASE_URL_ ?>clientes">Clientes</a>
+    </li>
+    <li class="breadcrumb-item active">Crear Cliente</li>
+</ol>
+
+<h4>Crear Cliente</h4>
+<hr>
+
+<form action="crear.php" method="post" class="w-50">
+    NIT: <input class="form-control" name="nit" type="number" min="1" required>
+    Razon Social: <input class="form-control" name="razon_social" type="text" required>
+
+    <hr>
+
+    <a class="btn btn-danger mr-1" href="index.php">Cancelar</a>
+    <button class="btn btn-success" type="submit"><span class="px-2">Guardar</span></button>
+</form>
+
+<?php require_once '../sitio/pie.php' ?>

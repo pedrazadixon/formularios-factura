@@ -50,7 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         Precio: <input required class="form-control" name="precio" type="number">
         Cantidad: <input required class="form-control" name="cantidad" type="number">
         <hr>
-        <a class="btn btn-danger" href="index.php">Cancelar</a> <button class="btn btn-success " type="submit"><span class="px-2">Guardar</span></button>
+        <a class="btn btn-danger mr-1" href="index.php">Cancelar</a>
+        <button class="btn btn-success " type="submit"><span class="px-2">Guardar</span></button>
     </form>
 </div>
 

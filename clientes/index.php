@@ -32,56 +32,72 @@ $conn->close();
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" crossorigin="anonymous">
 </head>
 
-<div class="container">
-    <div class="my-4 text-center">
 
-        <h2>Clientes</h2>
-        <hr>
+
+
+<?php require_once '../sitio/cabecera.php' ?>
+
+<!-- Ruta-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="<?php echo BASE_URL_ ?>">Facturas UCC</a>
+    </li>
+    <li class="breadcrumb-item active">Clientes</li>
+</ol>
+
+<h4>Clientes</h4>
+<hr>
+
+<div class="row mb-3">
+    <div class="col-md-12">
         <a class="btn btn-success" href="crear.php">Nuevo Cliente</a>
-        <hr>
+    </div>
+</div>
 
+
+<div class="row">
+    <div class="col-md-12">
         <?php if (empty($clientes)) : ?>
             <p>Aún no hay clientes registrados.</p>
         <?php else : ?>
-            <div class="row col-md-12 d-flex justify-content-center align-items-center">
-                <table class="col-md-8 table-striped">
+            <table class="table table-sm">
+                <tr>
+                    <th>Id</th>
+                    <th>Nit</th>
+                    <th>Razon Social</th>
+                    <th>Acciones</th>
+                </tr>
+                <?php foreach ($clientes as $key => $cliente) : ?>
                     <tr>
-                        <th>Id</th>
-                        <th>Nit</th>
-                        <th>Razon Social</th>
-                        <th>Acciones</th>
+                        <td><?php echo $cliente['id_cliente'] ?></td>
+                        <td><?php echo $cliente['nit'] ?></td>
+                        <td><?php echo $cliente['razon_social'] ?></td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="ver_datos.php?id=<?php echo $cliente['id_cliente'] ?>">
+                                Ver
+                            </a>
+                            <a class="btn btn-primary btn-sm" href="actualizar.php?id=<?php echo $cliente['id_cliente'] ?>">
+                                Modificar Cliente
+                            </a>
+                            <a class="btn btn-primary btn-sm" href="agregar_datos.php?id=<?php echo $cliente['id_cliente'] ?>">
+                                Modificar Datos
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="borrar.php?id=<?php echo $cliente['id_cliente'] ?>" onclick="return confirm('¿Estas seguro?')">
+                                Eliminar
+                            </a>
+
+                        </td>
                     </tr>
-
-                    <?php foreach ($clientes as $key => $cliente) : ?>
-                        <tr>
-                            <td><?php echo $cliente['id_cliente'] ?></td>
-                            <td><?php echo $cliente['nit'] ?></td>
-                            <td><?php echo $cliente['razon_social'] ?></td>
-                            <td>
-                                <a class="btn btn-primary btn-sm" href="ver_datos.php?id=<?php echo $cliente['id_cliente'] ?>">
-                                    Ver
-                                </a>
-                                <a class="btn btn-primary btn-sm" href="actualizar.php?id=<?php echo $cliente['id_cliente'] ?>">
-                                    Modificar Cliente
-                                </a>
-                                <a class="btn btn-primary btn-sm" href="agregar_datos.php?id=<?php echo $cliente['id_cliente'] ?>">
-                                    Modificar Datos
-                                </a>
-                                <a class="btn btn-danger btn-sm" href="borrar.php?id=<?php echo $cliente['id_cliente'] ?>" onclick="return confirm('¿Estas seguro?')">
-                                    Eliminar
-                                </a>
-
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-
-                </table>
-            </div>
-
+                <?php endforeach; ?>
+            </table>
         <?php endif; ?>
-
-        <br>
-        <a class="btn btn-danger " href="../">volver</a>
-
     </div>
 </div>
+
+<div class="row mb-3">
+    <div class="col-md-12">
+        <a href="<?php echo BASE_URL_ ?>" class="btn btn-danger">Volver</button></a>
+    </div>
+</div>
+
+<?php require_once '../sitio/pie.php' ?>

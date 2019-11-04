@@ -52,25 +52,24 @@ $conn->close();
 
 ?>
 
-<!doctype html>
-<html lang="es">
+<?php require_once '../sitio/cabecera.php' ?>
 
-<head>
-    <meta charset="utf-8">
-    <title>Facturas</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" crossorigin="anonymous">
-</head>
+<!-- Ruta-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="<?php echo BASE_URL_ ?>">Facturas UCC</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="<?php echo BASE_URL_ ?>clientes">Clientes</a>
+    </li>
+    <li class="breadcrumb-item active">Ver Cliente</li>
+</ol>
 
-<h2>Datos del cliente</h2>
+<h4>Ver Cliente</h4>
 <hr>
 
 <div class="container">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col" colspan="2">Datos del cliente</th>
-            </tr>
-        </thead>
+    <table class="table w-75">
         <tbody>
             <tr>
                 <th scope="row">Nit: </th>
@@ -101,9 +100,12 @@ $conn->close();
         </tbody>
     </table>
 
-    <br>
-    <div class="mt-3">
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-12">
         <a class="btn btn-danger" href="index.php">Volver</a>
     </div>
-
 </div>
+
+<?php require_once '../sitio/pie.php' ?>

@@ -19,8 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($conn->query($sql) === TRUE) {
         echo "El cliente se modifico correctamente";
     } else {
-       // echo "Error: " . $sql . "<br>" . $conn->error;
-	   echo "Nit ya existente por favor vuelve a intentarlo";
+        // echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Nit ya existente por favor vuelve a intentarlo";
     }
 }
 
@@ -36,26 +36,28 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 
-<!doctype html>
-<html lang="es">
+<?php require_once '../sitio/cabecera.php' ?>
 
-<head>
-  <meta charset="utf-8">
-  <title>Facturas</title>
-  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" crossorigin="anonymous">
-</head>
+<!-- Ruta-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="<?php echo BASE_URL_ ?>">Facturas UCC</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="<?php echo BASE_URL_ ?>clientes">Clientes</a>
+    </li>
+    <li class="breadcrumb-item active">Modificar Cliente</li>
+</ol>
 
-<h2>Modificar Cliente</h2>
+<h4>Modificar Cliente</h4>
 <hr>
-<div style="width: 50%;">
-    <form action="actualizar.php?id=<?php echo $_GET['id'] ?>" method="post">
-        <fieldset>
-            <legend>Datos del producto:</legend>
-            NIT: <input name="nit" value="<?php echo $cliente[0]['nit'] ?>" type="number" min="1" required><br>
-            Razon Social: <input name="razon_social" value="<?php echo $cliente[0]['razon_social'] ?>" type="text" required><br>
-            <br>
-            <a href="index.php"><button type="button"><< volver</button></a>
-            <button type="submit">Guardar</button>
-        </fieldset>
-    </form>
-</div>
+
+<form class="w-50" action="actualizar.php?id=<?php echo $_GET['id'] ?>" method="post">
+    NIT: <input class="form-control" name="nit" value="<?php echo $cliente[0]['nit'] ?>" type="number" min="1" required>
+    Razon Social: <input class="form-control" name="razon_social" value="<?php echo $cliente[0]['razon_social'] ?>" type="text" required>
+    <hr>
+    <a class="btn btn-danger mr-1" href="index.php">Cancelar</a>
+    <button class="btn btn-success" type="submit"><span class="px-2">Guardar</span></button>
+</form>
+
+<?php require_once '../sitio/pie.php' ?>

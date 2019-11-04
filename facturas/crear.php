@@ -190,7 +190,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <hr>
 
     <div class="mt-3">
-        <a class="btn btn-danger mr-3" href="index.php">Cancelar</a>
+        <a class="btn btn-danger mr-1" href="index.php">Cancelar</a>
         <button class=" btn btn-success" type="submit" name="facturar" value="facturar"><span class="px-2">Guardar</span></button>
     </div>
 </form>

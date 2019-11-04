@@ -22,8 +22,6 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 
-
-
 <?php require_once '../sitio/cabecera.php' ?>
 
 <!-- Ruta-->
