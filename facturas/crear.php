@@ -65,25 +65,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (isset($_POST['facturar']) && $_POST['facturar'] == "facturar") {
-
         if (isset($_POST['productos_']) && !empty($_POST['productos_'])) {
-
             $sql = "INSERT INTO `facturas` (id_factura, cliente_id, fecha) VALUES (NULL, '" . $_POST["cliente_id"] . "', '" . date("Y-m-d H:i:s") . "')";
-
             if ($conn->query($sql) === TRUE) {
-
                 $id_factura = $conn->insert_id;
-
                 foreach ($_POST['productos_'] as $key => $producto_factura) {
-
                     $sql = "INSERT INTO `facturas_productos` (`id_facturas_productos`, `factura_id`, `producto_id`, `cantidad_factura`, `precio_factura`) 
                         VALUES (NULL, '" . $id_factura . "', '" . $producto_factura["id_producto"] . "', '" . $producto_factura["cantidad"] . "', '" . $producto_factura["precio"] . "')";
-
-                    echo $sql;
-
                     $conn->query($sql);
                 }
-
                 header('Location: index.php');
                 die();
             } else {
@@ -154,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     <h6>Productos:</h6>
-    
+
     <input class="form-control" type="hidden" name="productos_factura" value="<?php echo @$productos_factura_input ?>">
     <?php if (@!empty($productos_factura)) : ?>
         <table class="table">
