@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 02-11-2019 a las 17:40:05
--- Versión del servidor: 10.1.28-MariaDB
--- Versión de PHP: 7.1.11
+-- Host: localhost:3306
+-- Generation Time: Nov 04, 2019 at 02:38 AM
+-- Server version: 5.7.24
+-- PHP Version: 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `formularios-factura`
+-- Database: `formularios-factura`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `clientes`
+-- Table structure for table `clientes`
 --
 
 CREATE TABLE `clientes` (
@@ -35,7 +35,7 @@ CREATE TABLE `clientes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `clientes`
+-- Dumping data for table `clientes`
 --
 
 INSERT INTO `clientes` (`id_cliente`, `razon_social`, `nit`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `clientes` (`id_cliente`, `razon_social`, `nit`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `clientes_datos`
+-- Table structure for table `clientes_datos`
 --
 
 CREATE TABLE `clientes_datos` (
@@ -56,18 +56,19 @@ CREATE TABLE `clientes_datos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `clientes_datos`
+-- Dumping data for table `clientes_datos`
 --
 
 INSERT INTO `clientes_datos` (`id`, `tipo`, `cliente_id`, `dato`) VALUES
-(1, 'EMAIL', 1, 'admin@ssend.co'),
-(2, 'TELEFONO', 1, '7777777'),
-(3, 'DIRECCION', 1, 'cra 1 1 1');
+(2, 'DIRECCION', 1, 'cra 2 2 2'),
+(3, 'TELEFONO', 1, '6666666'),
+(4, 'EMAIL', 1, 'info@ssend.co'),
+(5, 'DIRECCION', 1, 'cra 0 0 0');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `facturas`
+-- Table structure for table `facturas`
 --
 
 CREATE TABLE `facturas` (
@@ -77,16 +78,20 @@ CREATE TABLE `facturas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `facturas`
+-- Dumping data for table `facturas`
 --
 
 INSERT INTO `facturas` (`id_factura`, `cliente_id`, `fecha`) VALUES
-(1000, 1, '2019-11-02 17:10:36');
+(1000, 1, '2019-11-02 17:10:36'),
+(1001, 2, '2019-11-03 20:13:47'),
+(1002, 2, '2019-11-03 20:16:33'),
+(1003, 1, '2019-11-04 02:18:26'),
+(1004, 1, '2019-11-04 02:36:00');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `facturas_productos`
+-- Table structure for table `facturas_productos`
 --
 
 CREATE TABLE `facturas_productos` (
@@ -98,16 +103,24 @@ CREATE TABLE `facturas_productos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `facturas_productos`
+-- Dumping data for table `facturas_productos`
 --
 
 INSERT INTO `facturas_productos` (`id_facturas_productos`, `factura_id`, `producto_id`, `cantidad_factura`, `precio_factura`) VALUES
-(1, 1000, 1, 5, 5000);
+(1, 1000, 1, 5, 5000),
+(2, 1001, 1, 5, 5000),
+(3, 1001, 2, 3, 8000),
+(4, 1002, 1, 5, 5000),
+(5, 1002, 2, 3, 8000),
+(6, 1003, 1, 5, 5000),
+(7, 1003, 2, 3, 8000),
+(8, 1003, 3, 2, 5000),
+(9, 1004, 1, 5, 5000);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `productos`
+-- Table structure for table `productos`
 --
 
 CREATE TABLE `productos` (
@@ -118,80 +131,81 @@ CREATE TABLE `productos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `productos`
+-- Dumping data for table `productos`
 --
 
 INSERT INTO `productos` (`id_producto`, `descripcion`, `precio`, `cantidad`) VALUES
 (1, 'ESCOBA', 5000, 5),
-(2, 'TRAPERO', 8000, 3);
+(2, 'TRAPERO', 8000, 3),
+(3, 'VALDE', 5000, 2);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `clientes`
+-- Indexes for table `clientes`
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id_cliente`);
 
 --
--- Indices de la tabla `clientes_datos`
+-- Indexes for table `clientes_datos`
 --
 ALTER TABLE `clientes_datos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `facturas`
+-- Indexes for table `facturas`
 --
 ALTER TABLE `facturas`
   ADD PRIMARY KEY (`id_factura`);
 
 --
--- Indices de la tabla `facturas_productos`
+-- Indexes for table `facturas_productos`
 --
 ALTER TABLE `facturas_productos`
   ADD PRIMARY KEY (`id_facturas_productos`);
 
 --
--- Indices de la tabla `productos`
+-- Indexes for table `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id_producto`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `clientes`
+-- AUTO_INCREMENT for table `clientes`
 --
 ALTER TABLE `clientes`
   MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `clientes_datos`
+-- AUTO_INCREMENT for table `clientes_datos`
 --
 ALTER TABLE `clientes_datos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `facturas`
+-- AUTO_INCREMENT for table `facturas`
 --
 ALTER TABLE `facturas`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1005;
 
 --
--- AUTO_INCREMENT de la tabla `facturas_productos`
+-- AUTO_INCREMENT for table `facturas_productos`
 --
 ALTER TABLE `facturas_productos`
-  MODIFY `id_facturas_productos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_facturas_productos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT de la tabla `productos`
+-- AUTO_INCREMENT for table `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
