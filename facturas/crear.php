@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
     $clientes = null;
 }
 
-$sql = "SELECT * FROM `productos`";
+$sql = "SELECT * FROM `productos` WHERE cantidad>0" ;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -59,9 +59,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             foreach ($productos as $key => $producto) {
                 if ($producto['id_producto'] == $producto_factura) {
                     $productos_factura[] = $producto;
+                    
                 }
             }
         }
+    }
+
+    function actualizar_cantidad(){
+
     }
 
     if (isset($_POST['facturar']) && $_POST['facturar'] == "facturar") {
@@ -73,6 +78,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $sql = "INSERT INTO `facturas_productos` (`id_facturas_productos`, `factura_id`, `producto_id`, `cantidad_factura`, `precio_factura`) 
                         VALUES (NULL, '" . $id_factura . "', '" . $producto_factura["id_producto"] . "', '" . $producto_factura["cantidad"] . "', '" . $producto_factura["precio"] . "')";
                     $conn->query($sql);
+                    foreach ($productos as $key => $productos_item ){
+                         if($productos_item['id_producto']== $producto_factura["id_producto"]){
+                              $nueva_cantidad = $productos_item['cantidad'] - $producto_factura["cantidad"];
+                            $sql = 'UPDATE productos SET cantidad = '.$nueva_cantidad.' WHERE id_producto = "'.$productos_item['id_producto'].'"';
+                          $conn->query($sql);
+                         }
+
+                    }
+                   
+                   
                 }
                 header('Location: index.php');
                 die();
